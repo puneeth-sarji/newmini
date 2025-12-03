@@ -3,7 +3,7 @@
 # SDN AI Traffic Classifier - Run Script
 # This script starts the complete system
 
-PROJECT_DIR="$HOME/sdn-ai-traffic-classifier"
+PROJECT_DIR="/home/puneeth8055/Desktop/sdn-ai-traffic-classifier"
 
 echo "================================"
 echo "Starting SDN AI System"

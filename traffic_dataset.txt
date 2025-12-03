@@ -1,0 +1,174 @@
+SDN AI Traffic Classifier - Traffic Dataset
+============================================
+
+This file contains the traffic flow definitions and characteristics used in the demo.
+
+TRAFFIC FLOWS DEFINITION:
+------------------------
+Format: (src_ip, dst_ip, src_port, dst_port, protocol, packet_size)
+
+1. HTTP Traffic (Web Browsing):
+   - 10.0.0.1:12345 -> 10.0.0.3:80 (TCP, 1200 bytes)
+   - 10.0.0.1:12346 -> 10.0.0.3:443 (TCP, 1400 bytes) - HTTPS
+   - 10.0.0.1:12347 -> 10.0.0.3:8080 (TCP, 1100 bytes) - Alternative HTTP
+
+2. Video Streaming:
+   - 10.0.0.2:54321 -> 10.0.0.4:554 (TCP, 1400 bytes) - RTSP
+   - 10.0.0.2:54322 -> 10.0.0.4:5004 (UDP, 1300 bytes) - RTP
+   - 10.0.0.2:54323 -> 10.0.0.4:1935 (TCP, 1500 bytes) - RTMP
+
+3. VoIP Traffic (Voice Communication):
+   - 10.0.0.3:16384 -> 10.0.0.5:5060 (UDP, 160 bytes) - SIP
+   - 10.0.0.3:16385 -> 10.0.0.5:5061 (UDP, 180 bytes) - SIP over TLS
+   - 10.0.0.3:20000 -> 10.0.0.5:16384 (UDP, 200 bytes) - RTP Audio
+
+4. FTP Traffic (File Transfer):
+   - 10.0.0.4:8765 -> 10.0.0.6:21 (TCP, 1500 bytes) - FTP Control
+   - 10.0.0.4:8766 -> 10.0.0.6:20 (TCP, 1500 bytes) - FTP Data
+   - 10.0.0.4:8767 -> 10.0.0.6:22 (TCP, 1200 bytes) - SFTP
+
+5. Gaming Traffic:
+   - 10.0.0.5:27015 -> 10.0.0.1:27015 (UDP, 200 bytes) - Steam Gaming
+   - 10.0.0.5:27016 -> 10.0.0.1:27016 (UDP, 250 bytes) - Game Data
+   - 10.0.0.5:27017 -> 10.0.0.1:27017 (UDP, 180 bytes) - Game Voice
+
+TRAFFIC CLASSIFICATION RULES:
+-----------------------------
+Port-based classification:
+
+Web Traffic (HTTP):
+- Port 80: HTTP
+- Port 443: HTTPS
+- Port 8080: Alternative HTTP
+- Port 8443: Alternative HTTPS
+
+Video Streaming:
+- Port 554: RTSP
+- Port 5004: RTP
+- Port 1935: RTMP
+- Ports 5000-5100: RTSP Range
+
+VoIP Traffic:
+- Port 5060: SIP
+- Port 5061: SIP over TLS
+- Ports 16384-32767: RTP Audio Range
+
+File Transfer (FTP):
+- Port 20: FTP Data
+- Port 21: FTP Control
+- Port 22: SFTP/SSH
+
+Gaming Traffic:
+- Ports 27015-27050: Steam Gaming Range
+
+QOS REQUIREMENTS BY TRAFFIC TYPE:
+----------------------------------
+
+1. VoIP (Priority: 3 - Highest):
+   - Min Bandwidth: 64 Kbps
+   - Max Latency: 50 ms
+   - Max Jitter: 30 ms
+   - Max Packet Loss: 1%
+   - Description: Real-time voice requiring very low latency
+
+2. Gaming (Priority: 3 - Highest):
+   - Min Bandwidth: 100 Kbps
+   - Max Latency: 100 ms
+   - Max Jitter: 50 ms
+   - Max Packet Loss: 2%
+   - Description: Interactive gaming requiring responsive gameplay
+
+3. Video (Priority: 2 - High):
+   - Min Bandwidth: 500 Kbps
+   - Max Latency: 200 ms
+   - Max Jitter: 100 ms
+   - Max Packet Loss: 3%
+   - Description: Video streaming requiring consistent bandwidth
+
+4. HTTP (Priority: 1 - Normal):
+   - Min Bandwidth: 100 Kbps
+   - Max Latency: 500 ms
+   - Max Jitter: 200 ms
+   - Max Packet Loss: 5%
+   - Description: Web browsing with moderate requirements
+
+5. FTP (Priority: 0 - Low):
+   - Min Bandwidth: 50 Kbps
+   - Max Latency: 1000 ms
+   - Max Jitter: 500 ms
+   - Max Packet Loss: 10%
+   - Description: File transfer tolerant of delays
+
+NETWORK PATHS:
+-------------
+Available routing paths with characteristics:
+
+Path 1 (High-Speed Fiber):
+- Hops: 2
+- Bandwidth: 1000 Mbps
+- Base Latency: 5 ms
+- Current Load: 30%
+- Reliability: 99%
+- Cost: 10 (High)
+- Description: Premium fiber optic link
+
+Path 2 (Medium-Speed):
+- Hops: 3
+- Bandwidth: 500 Mbps
+- Base Latency: 10 ms
+- Current Load: 50%
+- Reliability: 97%
+- Cost: 7 (Medium)
+- Description: Standard connection
+
+Path 3 (Backup/Low-Cost):
+- Hops: 4
+- Bandwidth: 200 Mbps
+- Base Latency: 20 ms
+- Current Load: 70%
+- Reliability: 95%
+- Cost: 3 (Low)
+- Description: Economy backup connection
+
+PACKET SIZE CHARACTERISTICS:
+-----------------------------
+
+VoIP:
+- Range: 60-200 bytes
+- Typical: 160 bytes
+- Description: Small packets for real-time voice
+
+Gaming:
+- Range: 100-300 bytes
+- Typical: 200 bytes
+- Description: Small to medium packets for game data
+
+Video:
+- Range: 800-1500 bytes
+- Typical: 1400 bytes
+- Description: Large packets for video streaming
+
+HTTP:
+- Range: 500-1500 bytes
+- Typical: 1200 bytes
+- Description: Variable packet sizes for web traffic
+
+FTP:
+- Range: 1000-1500 bytes
+- Typical: 1500 bytes
+- Description: Large packets for file transfer
+
+USAGE IN DEMO:
+-------------
+The demo randomly selects from these traffic flows to simulate realistic network conditions.
+Each flow is classified using port-based rules and then routed using AI-based path selection
+that considers traffic requirements, network conditions, and path characteristics.
+
+The AI controller makes intelligent routing decisions by:
+1. Classifying traffic type based on destination port
+2. Selecting optimal path based on QoS requirements
+3. Monitoring performance metrics (latency, jitter, packet loss)
+4. Providing optimization suggestions for load balancing
+
+This dataset represents a realistic mix of modern network traffic types with appropriate
+QoS requirements for each category.
