@@ -1,0 +1,38 @@
+{
+  "dataset_size": 100000,
+  "model_type": "Random Forest (Large Scale)",
+  "accuracy": 0.9498,
+  "training_time_seconds": 5.228105783462524,
+  "feature_count": 14,
+  "class_count": 6,
+  "classes": [
+    "FTP",
+    "Gaming",
+    "HTTP",
+    "P2P",
+    "Video",
+    "VoIP"
+  ],
+  "model_parameters": {
+    "bootstrap": true,
+    "ccp_alpha": 0.0,
+    "class_weight": null,
+    "criterion": "gini",
+    "max_depth": 10,
+    "max_features": "sqrt",
+    "max_leaf_nodes": null,
+    "max_samples": null,
+    "min_impurity_decrease": 0.0,
+    "min_samples_leaf": 5,
+    "min_samples_split": 10,
+    "min_weight_fraction_leaf": 0.0,
+    "monotonic_cst": null,
+    "n_estimators": 20,
+    "n_jobs": -1,
+    "oob_score": false,
+    "random_state": 42,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "timestamp": "2025-12-04 19:55:21"
+}

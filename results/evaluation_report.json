@@ -1,0 +1,29 @@
+{
+  "model_type": "RandomForestClassifier",
+  "total_samples": 3,
+  "accuracy": 0.6666666666666666,
+  "precision": 0.8333333333333334,
+  "recall": 0.6666666666666666,
+  "f1_score": 0.6666666666666666,
+  "classes": [
+    "FTP",
+    "Gaming",
+    "HTTP",
+    "Video",
+    "VoIP"
+  ],
+  "per_class_metrics": {
+    "FTP": {
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1-score": 0.6666666666666666,
+      "support": 2.0
+    },
+    "HTTP": {
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1-score": 0.6666666666666666,
+      "support": 1.0
+    }
+  }
+}

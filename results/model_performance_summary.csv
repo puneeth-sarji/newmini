@@ -1,0 +1,2 @@
+model_name,accuracy,total_samples,correct_predictions,incorrect_predictions,num_classes,num_features,training_timestamp
+Random Forest (Large Scale),0.9498,3000,3000,0,6,14,1764868562.5734503

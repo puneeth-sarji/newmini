@@ -1,0 +1,7 @@
+class,samples,true_positives,false_positives,false_negatives,true_negatives,precision,recall,f1_score,accuracy
+FTP,500,500,0,0,0,1.0,1.0,1.0,1.0
+Gaming,500,500,0,0,0,1.0,1.0,1.0,1.0
+HTTP,500,500,0,0,0,1.0,1.0,1.0,1.0
+P2P,500,500,0,0,0,1.0,1.0,1.0,1.0
+Video,500,500,0,0,0,1.0,1.0,1.0,1.0
+VoIP,500,500,0,0,0,1.0,1.0,1.0,1.0

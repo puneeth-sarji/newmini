@@ -1,0 +1,43 @@
+{
+  "generated_files": [
+    "traffic_test_data.csv",
+    "model_predictions.csv",
+    "model_performance_summary.csv",
+    "per_class_performance.csv",
+    "feature_importance.csv"
+  ],
+  "model_info": {
+    "name": "Random Forest (Large Scale)",
+    "accuracy": 0.9498,
+    "classes": [
+      "FTP",
+      "Gaming",
+      "HTTP",
+      "P2P",
+      "Video",
+      "VoIP"
+    ],
+    "features": [
+      "duration",
+      "packet_count",
+      "byte_count",
+      "avg_packet_size",
+      "std_packet_size",
+      "avg_inter_arrival_time",
+      "std_inter_arrival_time",
+      "src_port",
+      "dst_port",
+      "protocol_tcp",
+      "protocol_udp",
+      "forward_packets",
+      "backward_packets",
+      "flow_bytes_per_sec"
+    ]
+  },
+  "test_dataset_info": {
+    "total_samples": 3000,
+    "samples_per_class": 500,
+    "feature_count": 14
+  },
+  "generation_timestamp": "2025-12-04T17:20:27.943986"
+}
