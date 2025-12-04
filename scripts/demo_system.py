@@ -16,14 +16,24 @@ sys.path.append('/home/puneeth8055/Desktop/sdn-ai-traffic-classifier')
 
 def load_model():
     """Load the trained ML model"""
-    try:
-        model_path = '/home/puneeth8055/Desktop/sdn-ai-traffic-classifier/traffic_classifier.pkl'
-        with open(model_path, 'rb') as f:
-            model_data = pickle.load(f)
-        return model_data
-    except Exception as e:
-        print(f"Error loading model: {e}")
-        return None
+    model_paths = [
+        '/home/puneeth8055/Desktop/sdn-ai-traffic-classifier/ml_models/traffic_classifier_real.pkl',
+        '/home/puneeth8055/Desktop/sdn-ai-traffic-classifier/ml_models/traffic_classifier.pkl',
+        '/home/puneeth8055/Desktop/sdn-ai-traffic-classifier/ml_models/traffic_classifier_large_scale.pkl'
+    ]
+    
+    for model_path in model_paths:
+        try:
+            with open(model_path, 'rb') as f:
+                model_data = pickle.load(f)
+            print(f"✅ Loaded model from: {model_path}")
+            return model_data
+        except Exception as e:
+            print(f"Could not load {model_path}: {e}")
+            continue
+    
+    print("❌ No model could be loaded")
+    return None
 
 def simulate_traffic_features():
     """Generate simulated traffic features for different traffic types"""
